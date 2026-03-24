@@ -1,0 +1,54 @@
+services:
+    app:
+        container_name: static-cache-app
+        build:
+            context: .
+            dockerfile: ./.docker/Dockerfile
+        ports:
+            - "80:80"
+            - "443:443"
+            - "5173:5173"
+        depends_on:
+            - db
+        volumes:
+            - ./:/var/www/html
+            - ./.docker/000-default.conf:/etc/apache2/sites-available/000-default.conf
+            - ./.docker/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+            - ./.docker/php.ini:/usr/local/etc/php/php.ini
+        networks:
+            - static-cache-network
+        extra_hosts:
+            - 'host.docker.internal:host-gateway'
+    db:
+        container_name: static-cache-db
+        image: mysql:8.4.5
+        volumes:
+            - db-volume:/var/lib/mysql
+            - ./.docker/dumps:/home/dumps
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: db
+            MYSQL_USER: db
+            MYSQL_PASSWORD: db
+        ports:
+            - "3306:3306"
+        networks:
+            - static-cache-network
+    redis:
+        container_name: static-cache-redis
+        image: redis:8.0.1
+        ports:
+            - "6379:6379"
+        volumes:
+            - ./.docker/redis.conf:/usr/local/etc/redis/redis.conf
+        command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+        networks:
+            - static-cache-network
+
+volumes:
+    db-volume:
+        name: static-cache-db-volume
+
+networks:
+    static-cache-network:
+        driver: bridge
