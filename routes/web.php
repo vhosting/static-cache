@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FilesController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
@@ -9,6 +10,9 @@ Route::inertia('/', 'Welcome', [
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'Dashboard')->name('dashboard');
+
+    Route::get('/pages', [FilesController::class, 'index'])->name('files.index');
+    Route::post('/clear-cache', [FilesController::class, 'delete'])->name('files.clear');
 });
 
 require __DIR__.'/settings.php';

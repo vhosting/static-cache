@@ -134,6 +134,9 @@ return [
         'ip' => env('SITE_BACKEND_IP'),
         'hostname' => env('SITE_BACKEND_HOSTNAME'),
         'useragent' => env('CALL_USER_AGENT'),
+        'file' => [
+            'exclusions' => env('SITE_FILE_EXCLUSIONS', '.gitignore,.gitkeep'),
+        ]
     ],
 
 ];
