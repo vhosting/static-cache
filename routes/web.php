@@ -2,14 +2,9 @@
 
 use App\Http\Controllers\FilesController;
 use Illuminate\Support\Facades\Route;
-use Laravel\Fortify\Features;
-
-Route::inertia('/', 'Welcome', [
-    'canRegister' => Features::enabled(Features::registration()),
-])->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::inertia('dashboard', 'Dashboard')->name('dashboard');
+    Route::inertia('/', 'Dashboard')->name('home');
 
     Route::get('/pages', [FilesController::class, 'index'])->name('files.index');
     Route::post('/clear-cache', [FilesController::class, 'delete'])->name('files.clear');
