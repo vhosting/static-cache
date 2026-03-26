@@ -3,8 +3,7 @@ export * from './navigation';
 export * from './ui';
 
 export interface CachedFile {
-    path: string;
     uri: string;
-    index: boolean;
-    amp: boolean;
+    index: string | null;
+    amp: string | null;
 }
