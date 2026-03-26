@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { Form, Head } from '@inertiajs/vue3';
+import { /*Form,*/ Head } from '@inertiajs/vue3';
 import { ref } from 'vue';
-import InputError from '@/components/InputError.vue';
-import PasswordInput from '@/components/PasswordInput.vue';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Spinner } from '@/components/ui/spinner';
+//import InputError from '@/components/InputError.vue';
+//import PasswordInput from '@/components/PasswordInput.vue';
+//import { Button } from '@/components/ui/button';
+//import { Input } from '@/components/ui/input';
+//import { Label } from '@/components/ui/label';
+//import { Spinner } from '@/components/ui/spinner';
 import AuthLayout from '@/layouts/AuthLayout.vue';
-import { update } from '@/routes/password';
+//import { update } from '@/routes/password';
 
 const props = defineProps<{
     token: string;
@@ -25,7 +25,7 @@ const inputEmail = ref(props.email);
     >
         <Head title="Reset password" />
 
-        <Form
+<!--        <Form
             v-bind="update.form()"
             :transform="(data) => ({ ...data, token, email })"
             :reset-on-success="['password', 'password_confirmation']"
@@ -83,6 +83,6 @@ const inputEmail = ref(props.email);
                     Reset password
                 </Button>
             </div>
-        </Form>
+        </Form>-->
     </AuthLayout>
 </template>
