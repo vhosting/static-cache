@@ -41,6 +41,7 @@ const filters = ref({
                 :value="files"
                 :rows="100"
                 paginator
+                size="small"
                 v-model:filters="filters"
                 :globalFilterFields="['uri', 'index', 'amp']"
             >
@@ -49,6 +50,7 @@ const filters = ref({
                         <InputText
                             v-model="filters['global'].value"
                             placeholder="Cerca..."
+                            size="small"
                             fluid
                         />
                     </div>

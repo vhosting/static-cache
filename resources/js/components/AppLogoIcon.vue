@@ -5,25 +5,33 @@ defineOptions({
     inheritAttrs: false,
 });
 
-type Props = {
+defineProps<{
     className?: HTMLAttributes['class'];
-};
-
-defineProps<Props>();
+}>();
 </script>
 
 <template>
     <svg
+        viewBox="0 0 24 24"
+        fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 40 42"
         :class="className"
         v-bind="$attrs"
     >
         <path
-            fill="currentColor"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M17.2 5.633 8.6.855 0 5.633v26.51l16.2 9 16.2-9v-8.442l7.6-4.223V9.856l-8.6-4.777-8.6 4.777V18.3l-5.6 3.111V5.633ZM38 18.301l-5.6 3.11v-6.157l5.6-3.11V18.3Zm-1.06-7.856-5.54 3.078-5.54-3.079 5.54-3.078 5.54 3.079ZM24.8 18.3v-6.157l5.6 3.111v6.158L24.8 18.3Zm-1 1.732 5.54 3.078-13.14 7.302-5.54-3.078 13.14-7.3v-.002Zm-16.2 7.89 7.6 4.222V38.3L2 30.966V7.92l5.6 3.111v16.892ZM8.6 9.3 3.06 6.222 8.6 3.143l5.54 3.08L8.6 9.3Zm21.8 15.51-13.2 7.334V38.3l13.2-7.334v-6.156ZM9.6 11.034l5.6-3.11v14.6l-5.6 3.11v-14.6Z"
+            d="M20 7C20 9.20914 16.4183 11 12 11C7.58172 11 4 9.20914 4 7C4 4.79086 7.58172 3 12 3C16.4183 3 20 4.79086 20 7Z"
+            class="stroke-white dark:stroke-black"
+            stroke-width="2"
+        />
+        <path
+            d="M20 12C20 14.2091 16.4183 16 12 16C7.58172 16 4 14.2091 4 12"
+            class="stroke-white dark:stroke-black"
+            stroke-width="2"
+        />
+        <path
+            d="M4 7V17C4 19.2091 7.58172 21 12 21C16.4183 21 20 19.2091 20 17V7"
+            class="stroke-white dark:stroke-black"
+            stroke-width="2"
         />
     </svg>
 </template>
