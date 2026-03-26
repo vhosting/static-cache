@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\DeleteMethod;
+use App\Http\Requests\DeleteCacheRequest;
 use App\Jobs\DeleteCacheJob;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -50,7 +51,7 @@ class FilesController extends Controller
         ]);
     }
 
-    public function delete(Request $request)
+    public function delete(DeleteCacheRequest $request)
     {
         $pattern = $request->input('pattern');
         $method = $request->enum('method', DeleteMethod::class);

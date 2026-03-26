@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
-import { LayoutGrid, DatabaseZap } from 'lucide-vue-next';
+import {
+    LayoutGrid,
+    DatabaseZap,
+    ChevronsLeftRightEllipsis,
+} from 'lucide-vue-next';
 import AppLogo from '@/components/AppLogo.vue';
 import NavFooter from '@/components/NavFooter.vue';
 import NavMain from '@/components/NavMain.vue';
@@ -16,6 +20,7 @@ import {
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
 import { index as files } from '@/routes/files';
+import { ui as api } from '@/routes/scramble/docs';
 import type { NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
@@ -32,6 +37,11 @@ const mainNavItems: NavItem[] = [
 ];
 
 const footerNavItems: NavItem[] = [
+    {
+        title: 'Documentazione API',
+        href: api(),
+        icon: ChevronsLeftRightEllipsis,
+    },
 ];
 </script>
 

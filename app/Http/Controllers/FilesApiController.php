@@ -3,12 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Enums\DeleteMethod;
+use App\Http\Requests\DeleteCacheRequest;
 use App\Jobs\DeleteCacheJob;
-use Illuminate\Http\Request;
+use Dedoc\Scramble\Attributes\Group;
 
+#[Group("Pages")]
 class FilesApiController extends Controller
 {
-    public function delete(Request $request)
+    /**
+     * Clear the cache
+     * @param DeleteCacheRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(DeleteCacheRequest $request)
     {
         $pattern = $request->input('pattern');
         $method = $request->enum('method', DeleteMethod::class);
