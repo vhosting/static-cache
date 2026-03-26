@@ -2,19 +2,18 @@
 import { Head } from '@inertiajs/vue3';
 import AppLayout from '@/layouts/AppLayout.vue';
 import type { BreadcrumbItem } from '@/types';
-import { index } from '@/routes/files';
+import { index, list } from '@/routes/files';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Badge from 'primevue/badge';
 import { FilterMatchMode } from '@primevue/core/api';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import InputText from 'primevue/inputtext';
 import type { CachedFile } from '@/types';
 import DeleteCache from '@/pages/files/DeleteCache.vue';
 
-defineProps<{
-    files: CachedFile[];
-}>();
+const loading = ref(false);
+const files = ref<CachedFile[]>([]);
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -30,6 +29,27 @@ const filters = ref({
     amp: { value: null, matchMode: FilterMatchMode.EQUALS },
 });
 
+onMounted(async () => {
+    try {
+        loading.value = true;
+        const response = await fetch(list().url, {
+            method: list().method,
+            headers: {
+                Accept: 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error(`Errore HTTP: ${response.status}`);
+        }
+
+        files.value = await response.json();
+    } catch (e) {
+        console.error(e);
+    } finally {
+        loading.value = false;
+    }
+});
 </script>
 
 <template>
@@ -39,6 +59,7 @@ const filters = ref({
         <div class="p-2">
             <DataTable
                 :value="files"
+                :loading
                 :rows="100"
                 paginator
                 size="small"
