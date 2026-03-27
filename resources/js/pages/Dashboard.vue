@@ -6,7 +6,7 @@ import type { BreadcrumbItem } from '@/types';
 import { Deferred } from '@inertiajs/vue3';
 import Skeleton from 'primevue/skeleton';
 import Widget from '@/components/Widget.vue';
-import { SquareLibrary, Globe, Zap } from 'lucide-vue-next';
+import { SquareLibrary, Globe, Zap } from '@lucide/vue';
 
 defineProps<{
     stats?: {

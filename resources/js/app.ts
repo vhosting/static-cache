@@ -4,8 +4,10 @@ import type { DefineComponent } from 'vue';
 import { createApp, h } from 'vue';
 import '../css/app.css';
 import { initializeTheme } from '@/composables/useAppearance';
-import Aura from '@primeuix/themes/aura';
 import PrimeVue from 'primevue/config';
+import CustomPreset from './preset';
+import ConfirmationService from 'primevue/confirmationservice';
+import { createToastflow } from 'vue-toastflow';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -21,12 +23,21 @@ createInertiaApp({
             .use(plugin)
             .use(PrimeVue, {
                 theme: {
-                    preset: Aura,
+                    preset: CustomPreset,
                     options: {
-                        darkModeSelector: '.dark'
-                    }
+                        darkModeSelector: '.dark',
+                    },
                 },
             })
+            .use(ConfirmationService)
+            .use(
+                createToastflow({
+                    position: 'bottom-center',
+                    closeButton: false,
+                    closeOnClick: true,
+                    swipeToDismiss: true,
+                }),
+            )
             .mount(el);
     },
     progress: {

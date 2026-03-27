@@ -56,7 +56,7 @@ onMounted(async () => {
     <Head title="Pagine" />
 
     <AppLayout :breadcrumbs="breadcrumbs">
-        <div class="p-2">
+        <div class="px-4 py-6">
             <DataTable
                 :value="files"
                 :loading
@@ -68,26 +68,15 @@ onMounted(async () => {
             >
                 <template #header>
                     <div>
-                        <InputText
-                            v-model="filters['global'].value"
-                            placeholder="Cerca..."
-                            size="small"
-                            fluid
-                        />
+                        <InputText v-model="filters['global'].value" placeholder="Cerca..." size="small" fluid />
                     </div>
                 </template>
                 <Column field="uri" header="URI" />
                 <Column header="Cache">
                     <template #body="{ data }: { data: CachedFile }">
                         <div class="flex items-center gap-1">
-                            <Badge
-                                :severity="data.index ? 'success' : 'danger'"
-                                value="DEFAULT"
-                            />
-                            <Badge
-                                :severity="data.amp ? 'success' : 'danger'"
-                                value="AMP"
-                            />
+                            <Badge :severity="data.index ? 'success' : 'danger'" value="DEFAULT" />
+                            <Badge :severity="data.amp ? 'success' : 'danger'" value="AMP" />
                         </div>
                     </template>
                 </Column>

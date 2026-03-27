@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { LucideIcon } from 'lucide-vue-next';
+import type { LucideIcon } from '@lucide/vue';
 
 const {
     iconClass = 'bg-slate-500',

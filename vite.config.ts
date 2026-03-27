@@ -22,16 +22,21 @@ export default defineConfig({
         }),
         wayfinder({
             formVariants: true,
+            actions: false,
+            routes: true,
         }),
     ],
     server: {
         host: '0.0.0.0',
         hmr: {
-            host: 'localhost'
+            host: 'localhost',
         },
         strictPort: true,
         watch: {
-            ignored: ['**/.idea/**']
-        }
+            ignored: [
+                '**/.idea/**',
+                '**/storage/**',
+            ],
+        },
     },
 });

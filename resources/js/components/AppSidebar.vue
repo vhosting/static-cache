@@ -4,7 +4,8 @@ import {
     LayoutGrid,
     DatabaseZap,
     ChevronsLeftRightEllipsis,
-} from 'lucide-vue-next';
+    Users,
+} from '@lucide/vue';
 import AppLogo from '@/components/AppLogo.vue';
 import NavFooter from '@/components/NavFooter.vue';
 import NavMain from '@/components/NavMain.vue';
@@ -19,7 +20,8 @@ import {
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { home } from '@/routes';
-import { index as files } from '@/routes/files';
+import * as files from '@/routes/files';
+import * as users from '@/routes/users';
 import { ui as api } from '@/routes/scramble/docs';
 import type { NavItem } from '@/types';
 
@@ -31,8 +33,13 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Pagine',
-        href: files(),
+        href: files.index(),
         icon: DatabaseZap,
+    },
+    {
+        title: 'Utenti',
+        href: users.index(),
+        icon: Users,
     },
 ];
 

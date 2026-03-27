@@ -1,0 +1,27 @@
+:root {
+    --tf-toast-border-radius: 0.75rem !important;
+    --tf-toast-padding: 0.6rem 0.75rem !important;
+    --tf-toast-border-width: 0 !important;
+
+    --tf-toast-success-bg-default: #000000 !important;
+    --tf-toast-warning-bg-default: #000000 !important;
+    --tf-toast-error-bg-default: #000000 !important;
+    --tf-toast-info-bg-default: #000000 !important;
+
+    --tf-toast-success-text-default: oklch(72.3% 0.219 149.579) !important;
+    --tf-toast-warning-text-default: oklch(76.9% 0.188 70.08) !important;
+    --tf-toast-error-text-default: oklch(63.7% 0.237 25.331) !important;
+    --tf-toast-info-text-default: white !important;
+}
+
+.dark {
+    --tf-toast-success-bg-default: #ffffff !important;
+    --tf-toast-warning-bg-default: #ffffff !important;
+    --tf-toast-error-bg-default: #ffffff !important;
+    --tf-toast-info-bg-default: #ffffff !important;
+
+    --tf-toast-success-text-default: oklch(52.7% 0.154 150.069) !important;
+    --tf-toast-warning-text-default: oklch(66.6% 0.179 58.318) !important;
+    --tf-toast-error-text-default: oklch(57.7% 0.245 27.325) !important;
+    --tf-toast-info-text-default: black !important;
+}
